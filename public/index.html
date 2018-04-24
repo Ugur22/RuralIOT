@@ -17,6 +17,7 @@
 
     #map {
         width: 100%;
+        margin-top:50px;
         height: calc(100% - 159px);
     }
 
@@ -27,8 +28,6 @@
 
 <head>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.3/p5.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -44,44 +43,15 @@
 
 <body>
     <div id="measurementarea">
-
-
-        <span>PH Meter</span>
-        <ul id="phMeter">
-            <progress id="phMeterBar" name="phMeterBar" value="80" max="100">
-            </progress>
-        </ul>
-        <h3 id="value">Value:</h3>
-        <form id="measureForm">
-            <p class="full">
-                <input type="text" placeholder="lat" lat="lat" id="lat">
-                <input type="text" placeholder="long" name="lng" id="lng">
-                <button type="submit">submit</button>
-            </p>
-        </form>
-       
+       <h1>Find PH measurements</h1>
         <script src="js/app.js" type="text/javascript"></script>
-        <script>
-            let socket = io();
-            // When data is 'recieved' do something
-            socket.on('data', function (val) {
-                // $('#phMeter').html($('#phMeterBar').val(val));
-                document.getElementById("phMeterBar").value = val;
-                if (val > 60) {
-                    $('#warning').html($('<h3>').text("PH value to high!!"));
-                } else {
-                    $('#warning').html($('<h3>').text("PH value is good :)"));
-                }
-                $('#value').html($('<h3>').text("Value: " + val));
-            });
-        </script>
     </div>
     <div id="map"></div>
-    <!-- <p>
+    <p>
         <ul id="measureList">
 
         </ul>
-    </p> -->
+    </p>
 </body>
 
 </html>

@@ -1,85 +1,64 @@
 
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyBnOws7IHhgRU_RxbG7yN8xygp0DPRsXy0",
-  authDomain: "ruralit-c379a.firebaseapp.com",
-  databaseURL: "https://ruralit-c379a.firebaseio.com",
-  projectId: "ruralit-c379a",
-  storageBucket: "",
-  messagingSenderId: "438134732513"
+  apiKey: "AIzaSyCxvjKhkhrrvHQ1YH4Ob9I80SZ-kXrqI-s",
+  authDomain: "ruralit-1620a.firebaseapp.com",
+  databaseURL: "https://ruralit-1620a.firebaseio.com",
+  projectId: "ruralit-1620a",
+  storageBucket: "ruralit-1620a.appspot.com",
+  messagingSenderId: "687154250117"
 };
 firebase.initializeApp(config);
-
+var measurementsLength;
 var measurementsRef = firebase.database().ref('measurements');
+
 var measurelabels = [];
-measurementsRef.on('value', getData);
+
+
+measurementsRef.on("value", function (snapshot) {
+  measurementsLength = snapshot.numChildren();
+  if (measurementsLength > 0) {
+    measurementsRef.on('value', getData);
+  }
+
+});
 
 function getData(data) {
+
   // measureList = document.getElementById("measureList");
   // measureList.innerHTML = '';
   let measurements = data.val();
   var geoData = [];
+
   var keys = Object.keys(measurements);
+
   for (let i = 0; i < keys.length; i++) {
     var k = keys[i];
-    geoData.push(measurements[k].geo);
-    var phValue = measurements[k].phValue;
-    measurelabels.push(measurements[k].phValue.toString());
-    var latitude = measurements[k].geo.lat;
-    var longitude = measurements[k].geo.lng;
-
+    geoData.push({
+      geo: [
+        {
+          lat: measurements[k].metadata.gateways[0].latitude,
+          lng: measurements[k].metadata.gateways[0].longitude
+        }
+      ],
+    }
+    );
+    var phValue = measurements[k].payload_fields.phValue;
+    measurelabels.push(measurements[k].payload_fields.phValue.toString());
+    // var latitude = measurements[k].metadata.gateways[0].latitude;
+    // var longitude = measurements[k].metadata.gateways[0].longitude;
     // var li = createDomElement({ tagName: 'li', attributes: { class: 'measurelisting' }, content: "PHvalue: " + phValue + ' latitude ' + latitude + ' longitudes ' + longitude });
 
     // measureList.appendChild(li);
 
   }
-  console.log(measurelabels);
+  console.log(geoData);
 
   clearMarkers();
   for (var i = 0; i < geoData.length; i++) {
-    addMarkerWithTimeout(geoData[i], i * 200);
+    addMarkerWithTimeout(geoData[i]['geo'][0], i * 200);
   }
-}
 
-
-
-
-document.getElementById('measureForm').addEventListener('submit',
-  submitForm);
-
-function submitForm(e) {
-  e.preventDefault();
-
-  var phValue = getInputVal('phMeterBar');
-  var lat = parseFloat(getInputVal('lat'));
-  var lng = parseFloat(getInputVal('lng'));
-  saveMeasurements(phValue, lat, lng);
-  // console.log(phValue);
-}
-
-function getInputVal(id) {
-  return document.getElementById(id).value;
-}
-
-// save measurements
-function saveMeasurements(phValue, lat, lng) {
-
-  let waterQuality = "";
-  if (phValue > 50) {
-    waterQuality = "unhealthy";
-  } else {
-    waterQuality = "healthy";
-  }
-  let newMeasurementref = measurementsRef.push();
-  newMeasurementref.set({
-    phValue: phValue,
-    geo: {
-      lat: lat,
-      lng: lng
-    },
-    waterQuality: waterQuality
-
-  });
 }
 
 /**
@@ -127,8 +106,8 @@ function addMarkerWithTimeout(position, timeout) {
   window.setTimeout(function () {
     markers.push(new google.maps.Marker({
       position: position,
-      map: map,
       label: measurelabels[labelIndex++ % measurelabels.length],
+      map: map,
       animation: google.maps.Animation.DROP
     }));
   }, timeout);
