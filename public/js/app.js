@@ -13,6 +13,7 @@ var measurementsLength;
 var measurementsRef = firebase.database().ref('measurements');
 
 var measurelabels = [];
+var gatewayIds = [];
 
 
 measurementsRef.on("value", function (snapshot) {
@@ -29,11 +30,29 @@ function getData(data) {
   // measureList.innerHTML = '';
   let measurements = data.val();
   var geoData = [];
-
+  var previousgatewayId = '';
+  var phvalueArray = [];
   var keys = Object.keys(measurements);
-
+  var phvalue = 0;
   for (let i = 0; i < keys.length; i++) {
     var k = keys[i];
+    var gatewayId = measurements[k].metadata.gateways[0].gtw_id
+    phvalue += parseFloat(measurements[k].payload_fields.phValue);
+    console.log(gatewayId);
+    if (previousgatewayId == gatewayId) {
+      console.log("yes");
+      
+      phvalueArray.push({
+        phGateway: [
+          {
+            phvalue: parseFloat(phvalue)
+          }
+        ]
+      })
+    } else {
+      console.log("no");
+      previousgatewayId = gatewayId;
+    }
     geoData.push({
       geo: [
         {
@@ -51,7 +70,8 @@ function getData(data) {
 
     // measureList.appendChild(li);
 
-  }
+  };
+  console.log(phvalueArray);
   console.log(geoData);
 
   clearMarkers();
