@@ -24,6 +24,8 @@ measurementsRef.on("value", function (snapshot) {
 
 });
 
+var measurelabels = [];
+
 function getData(data) {
 
   // measureList = document.getElementById("measureList");
@@ -31,48 +33,26 @@ function getData(data) {
   let measurements = data.val();
   var geoData = [];
   var previousgatewayId = '';
-  var phvalueArray = [];
+  var gateways = [];
   var keys = Object.keys(measurements);
-  var phvalue = 0;
+
   for (let i = 0; i < keys.length; i++) {
     var k = keys[i];
-    var gatewayId = measurements[k].metadata.gateways[0].gtw_id
-    phvalue += parseFloat(measurements[k].payload_fields.phValue);
-    console.log(gatewayId);
-    if (previousgatewayId == gatewayId) {
-      console.log("yes");
-      
-      phvalueArray.push({
-        phGateway: [
-          {
-            phvalue: parseFloat(phvalue)
-          }
-        ]
-      })
-    } else {
-      console.log("no");
-      previousgatewayId = gatewayId;
-    }
     geoData.push({
       geo: [
         {
-          lat: measurements[k].metadata.gateways[0].latitude,
-          lng: measurements[k].metadata.gateways[0].longitude
+          lat: measurements[k].payload_fields.location.lat,
+          lng: measurements[k].payload_fields.location.lng
         }
       ],
-    }
-    );
-    var phValue = measurements[k].payload_fields.phValue;
-    measurelabels.push(measurements[k].payload_fields.phValue.toString());
-    // var latitude = measurements[k].metadata.gateways[0].latitude;
-    // var longitude = measurements[k].metadata.gateways[0].longitude;
-    // var li = createDomElement({ tagName: 'li', attributes: { class: 'measurelisting' }, content: "PHvalue: " + phValue + ' latitude ' + latitude + ' longitudes ' + longitude });
-
-    // measureList.appendChild(li);
-
+    });
+    var turbidity = measurements[k].payload_fields.turbidity.toFixed(2);
+    measurelabels.push(turbidity.toString());
   };
-  console.log(phvalueArray);
-  console.log(geoData);
+
+
+
+
 
   clearMarkers();
   for (var i = 0; i < geoData.length; i++) {
@@ -81,52 +61,42 @@ function getData(data) {
 
 }
 
-/**
- * Generic function to create new DOM elements
- *
- * @param properties
- * @returns {Element}
- */
-function createDomElement(properties) {
-  //Create the element
-  var domElement = document.createElement(properties.tagName);
-
-  //Loop through the attributes to set them on the element
-  var attributes = properties.attributes;
-  for (var prop in attributes) {
-    domElement.setAttribute(prop, attributes[prop]);
-  }
-
-  //If any content, set the inner HTML
-  if (properties.content) {
-    domElement.innerHTML = properties.content;
-  }
-
-  //Return to use in other functions
-  return domElement;
-}
-
-
 
 
 // Google Maps
 var markers = [];
 var map;
 var labelIndex = 0;
+console.log(measurelabels);
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
-    center: { lat: 51.9314, lng: 4.5137 }
+    zoom: 8,
+    center: { lat: 51.8742258, lng: 4.4807875 }
   });
 
 }
 
+
 function addMarkerWithTimeout(position, timeout) {
+
+  var markerIcon = {
+    url: 'http://www.clker.com/cliparts/R/y/b/e/w/9/blue-rain-drop-hi.png',
+    scaledSize: new google.maps.Size(50, 50),
+    origin: new google.maps.Point(0, 0),
+    labelOrigin: new google.maps.Point(25,33)
+  };
+
   window.setTimeout(function () {
     markers.push(new google.maps.Marker({
       position: position,
-      label: measurelabels[labelIndex++ % measurelabels.length],
+      label: {
+        text: measurelabels[labelIndex++ % measurelabels.length],
+        color: "#000",
+        fontSize: "12px",
+        fontWeight: "bold"
+      },
+      icon: markerIcon,
       map: map,
       animation: google.maps.Animation.DROP
     }));
