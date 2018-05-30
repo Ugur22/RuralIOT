@@ -1,0 +1,24 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+progress[value] {
+    /* Reset the default appearance */
+    -webkit-appearance: none;
+
+    width: 500px;
+    height: 40px;
+}
+
+#map {
+    width: 100%;
+    margin-top: 50px;
+    height: calc(100% - 159px);
+}
+
+li {
+    list-style-type: none;
+}
