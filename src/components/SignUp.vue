@@ -1,11 +1,11 @@
 <template>
 <div class="sign-up">
     <p>Create a new account</p>
-    <input type="text" v-model="email" placeholder="Email"><br>
-    <input type="password" v-model="password" placeholder="Password"><br>
-    <input type="text" v-model="username" placeholder="username"> <br>
-    <button v-on:click="signUp">Sign Up</button>
-    <span>or go back to <router-link to="/login">login</router-link></span>
+    <input type="text" class="input" v-model="email" placeholder="Email"><br>
+    <input type="password" class="input" v-model="password" placeholder="Password"><br>
+    <input type="text" class="input" v-model="username" placeholder="username"> <br>
+    <button v-on:click="signUp" class="button">Sign Up</button>
+    <p>or go back to <router-link to="/login">login</router-link></p>
 </div>
 </template>
 
@@ -60,10 +60,9 @@ button {
   cursor: pointer;
 }
 
-span {
+p {
   display: block;
   margin-top: 20px;
-  font-size: 11px;
 }
 </style>
 

@@ -1,7 +1,9 @@
 <template>
   <div class="hello">
      <button id="logout" v-if="user" v-on:click="logout">Logout</button>
-      <div class="box">
+      <div class="columns">
+
+        <div class="column is-two-fifths">
           <form id="signup-form"  @submit.prevent="processForm">
         <!-- title -->
         <div class="field">
@@ -35,9 +37,9 @@
         </div>
           </form>
       </div>
-
+      </div>
         <div class='columns'>
-    <div class='column is-4' v-for="item in stories"  :key="item.id" >
+    <div class='column is-two-fifths' v-for="item in stories"  :key="item.id" >
       <div class="card">
         <div class="card-image">
           <figure class="image is-4by3">
@@ -129,10 +131,16 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.box {
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+.column.is-two-fifths {
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 3px 5px 4px 5px rgb(55, 114, 219, 0.2);
+}
+
+.card {
+  box-shadow:0px;
 }
 
 #logout {
@@ -147,35 +155,8 @@ textarea {
   display: block;
 }
 
-@media screen and (min-width: 769px) {
-  .columns {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
-  }
-
-  .card {
-    height: 573px;
-    border-radius: 10px;
-    box-shadow: 3px 5px 4px 5px rgb(55, 114, 219, 0.2);
-    padding: 30px;
-  }
-
-  .column.is-4 {
-    width: 44%;
-    display: block;
-    margin: 0 auto;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .columns {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 .hello {
- margin-top: 20px;
+  margin-top: 20px;
 }
 
 .columns {
