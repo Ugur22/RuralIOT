@@ -115,7 +115,7 @@ export default {
       newMeasurementref.set({
         title: this.title,
         text: this.text,
-        user:firebase.auth().currentUser.displayName,
+        user: firebase.auth().currentUser.displayName,
         imgurl: this.imgurl,
         date: currentDate.toString().slice(4, 15)
       });
@@ -143,6 +143,10 @@ textarea {
   resize: none;
 }
 
+.columns[data-v-1faf2446] {
+  display: block;
+}
+
 @media screen and (min-width: 769px) {
   .columns {
     display: grid;
@@ -152,10 +156,15 @@ textarea {
 
   .card {
     height: 573px;
+    border-radius: 10px;
+    box-shadow: 3px 5px 4px 5px rgb(55, 114, 219, 0.2);
+    padding: 30px;
   }
 
   .column.is-4 {
-    width: 100%;
+    width: 44%;
+    display: block;
+    margin: 0 auto;
   }
 }
 
@@ -166,7 +175,7 @@ textarea {
 }
 
 .hello {
-  margin-top: 10px;
+ margin-top: 20px;
 }
 
 .columns {
