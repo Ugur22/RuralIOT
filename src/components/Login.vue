@@ -64,6 +64,10 @@ export default {
 
 <style scoped>
 
+.hero.is-fullheight {
+
+  min-height: 0;
+}
 
 p {
   margin-top: 40px;
