@@ -84,7 +84,6 @@ export default {
 
         for (let i = 0; i < turbidityArray.length; i++) {
           for (let j = 0; j < turbidityArray[i].amsterdam.length; j++) {
-            console.log(turbidityArray[i].amsterdam[j].date);
 
             data.addRows([
               [
@@ -137,8 +136,6 @@ export default {
 
         for (let i = 0; i < turbidityArray.length; i++) {
           for (let j = 0; j < turbidityArray[i].rotterdam.length; j++) {
-            console.log(turbidityArray[i].rotterdam[j].date);
-
             data.addRows([
               [
                 turbidityArray[i].rotterdam[j].date,

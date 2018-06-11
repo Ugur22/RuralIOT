@@ -12,7 +12,6 @@
       <span></span>
     </div>
   </div>
-
   <div id="navMenubd-example" class="navbar-menu">
     <div class="navbar-start">
         <a class="navbar-item">
@@ -25,7 +24,6 @@
   </div>
 </nav>
      <router-view/>
-
   </div>
 </template>
 

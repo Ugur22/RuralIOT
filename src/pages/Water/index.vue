@@ -13,8 +13,8 @@ var locations = [];
 var markers = [];
 var infowindow;
 var turbidity;
-import '../../js/libraries/markerclusterer';
-import {db} from '../../js/database/firebase';
+import "../../js/libraries/markerclusterer";
+import { db } from "../../js/database/firebase";
 
 export default {
   name: "water",
@@ -34,6 +34,13 @@ export default {
         gestureHandling: "greedy",
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
+
+      var cluster = new MarkerClusterer(map, markers, {
+        imagePath:
+          "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
+      });
+
+      cluster.clearMarkers();
 
       map.data.setMap(null);
 
@@ -127,11 +134,6 @@ export default {
         );
         markers.push(marker);
         map.fitBounds(bounds);
-      });
-
-      var cluster = new MarkerClusterer(map, markers, {
-        imagePath:
-          "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"
       });
     }
   }

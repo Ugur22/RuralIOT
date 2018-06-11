@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-     <button id="logout" v-if="user" v-on:click="logout">Logout</button>
+     <button id="logout" v-if="user" v-on:click="logout" class="button is-link">Logout</button>
       <div class="columns">
 
         <div class="column is-two-fifths">
@@ -31,7 +31,7 @@
 
         <!-- submit button -->
         <div class="field has-text-right">
-          <button type="submit" class="button is-danger">
+          <button type="submit" class="button is-link">
             Create Story            
           </button>
         </div>
@@ -140,12 +140,10 @@ export default {
 }
 
 .card {
-  box-shadow:0px;
+  box-shadow: 0 0 0 0;
 }
 
-#logout {
-  float: right;
-}
+
 
 textarea {
   resize: none;
