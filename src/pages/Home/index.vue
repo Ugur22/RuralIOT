@@ -139,6 +139,10 @@ export default {
   box-shadow: 3px 5px 4px 5px rgb(55, 114, 219, 0.2);
 }
 
+.columns:not(.is-desktop) {
+  display: block;
+}
+
 .card {
   box-shadow: 0 0 0 0;
 }

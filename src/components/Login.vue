@@ -1,12 +1,36 @@
 <template>
-<div class="login">
-    <h3>Sign In</h3>
-    <input type="text" class="input" v-model="email" placeholder="Email"><br>
-    <input type="password" class="input" v-model="password" placeholder="Password"><br>
-    <button v-on:click="signIn" class="button is-link">Login</button>
-    <p>You don't have an account? You can <router-link to="/sign-up">create one</router-link></p>
-  
-</div>
+    <section class="hero  is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-4 is-offset-4">
+                    <h3 class="title has-text-grey">Login</h3>
+                    <p class="subtitle has-text-grey">Please login to proceed.</p>
+                    <div class="box">
+                        <form>
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input is-medium"  v-model="email" type="email" placeholder="Your Email" autofocus="">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input is-medium" v-model="password" type="password" placeholder="Your Password">
+                                </div>
+                            </div>
+                            <button class="button  is-block is-info is-medium is-fullwidth" v-on:click="signIn">Login</button>
+                        </form>
+                    </div>
+                    <p class="has-text-grey">
+                        <a href="../"><router-link to="/sign-up">or Sign up</router-link></a> &nbsp;·&nbsp;
+                       
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 </template>
 
 <script>
@@ -21,36 +45,25 @@ export default {
     };
   },
   methods: {
- signIn: function() {
-        firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
-          (user) => {
-            this.$router.replace('home')
+    signIn: function() {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then(
+          user => {
+            this.$router.replace("home");
           },
-          (err) => {
-            alert('Oops. ' + err.message)
+          err => {
+            alert("Oops. " + err.message);
           }
         );
-      }
+    }
   }
 };
 </script>
 
 <style scoped>
-.login {
-  margin-top: 40px;
-}
 
-input {
-  margin: 10px 0;
-  width: 20%;
-  padding: 15px;
-}
-
-button {
-  margin-top: 20px;
-  width: 10%;
-  cursor: pointer;
-}
 
 p {
   margin-top: 40px;
