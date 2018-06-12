@@ -6,7 +6,7 @@
                     <h3 class="title has-text-grey">Login</h3>
                     <p class="subtitle has-text-grey">Please login to proceed.</p>
                     <div class="box">
-                        <form>
+                        <div>
                             <div class="field">
                                 <div class="control">
                                     <input class="input is-medium"  v-model="email" type="email" placeholder="Your Email" autofocus="">
@@ -19,7 +19,7 @@
                                 </div>
                             </div>
                             <button class="button  is-block is-info is-medium is-fullwidth" v-on:click="signIn">Login</button>
-                        </form>
+                        </div>
                     </div>
                     <p class="has-text-grey">
                         <a href="../"><router-link to="/sign-up">or Sign up</router-link></a> &nbsp;·&nbsp;

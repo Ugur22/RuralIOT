@@ -49,7 +49,7 @@
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <p class="title is-4">{{item.title | truncate}}</p>
+              <p class="title is-4 has-text-centered">{{item.title | truncate}}</p>
             </div>
           </div>
 
