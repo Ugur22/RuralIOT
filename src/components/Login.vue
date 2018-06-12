@@ -69,10 +69,6 @@ export default {
   min-height: 0;
 }
 
-p {
-  margin-top: 40px;
-  font-size: 13px;
-}
 
 p a {
   text-decoration: underline;

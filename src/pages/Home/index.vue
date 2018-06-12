@@ -57,7 +57,7 @@
             {{item.text | truncate}}
             <a href="#">Read more</a>
             <br>
-            <b>{{item.date}}</b> <br>
+            <b>{{item.date| slice}}</b> <br>
             <b>{{item.user}}</b>
           </div>
         </div>
@@ -96,9 +96,14 @@ export default {
   filters: {
     truncate: function(value) {
       if (!value) return "";
-      return value.length < 80
-        ? value.substring(0, 35).concat("...")
-        : value.substring(0, 100).concat("...");
+      return value.length > 30
+        ? value.substring(0, 40).concat("...")
+        : value;
+    },
+    slice: function(value) {
+      if (!value) return "";
+      value = value.toString();
+      return value.slice(0, 15);
     }
   },
 
@@ -119,7 +124,7 @@ export default {
         text: this.text,
         user: firebase.auth().currentUser.displayName,
         imgurl: this.imgurl,
-        date: currentDate.toString().slice(4, 15)
+        date: currentDate.toString()
       });
       this.text = "";
       this.title = "";
@@ -135,6 +140,7 @@ export default {
   margin: 0 auto;
   margin-top: 20px;
   padding: 30px;
+  margin-bottom: 25px;
   border-radius: 10px;
   box-shadow: 3px 5px 4px 5px rgb(55, 114, 219, 0.2);
 }
@@ -146,8 +152,6 @@ export default {
 .card {
   box-shadow: 0 0 0 0;
 }
-
-
 
 textarea {
   resize: none;

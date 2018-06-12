@@ -82,10 +82,6 @@ export default {
   min-height: 0;
 }
 
-p {
-  display: block;
-  margin-top: 20px;
-}
 </style>
 
 
