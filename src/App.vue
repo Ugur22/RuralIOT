@@ -52,12 +52,9 @@ body {
 }
 
 .navbar a {
-  color: #fff;
+  color: #34495e;
 }
 
-.navbar-menu.is-active {
-  background: #3772db;
-}
 
 
 #app {
