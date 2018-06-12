@@ -33,6 +33,10 @@ export default {
 
       measurementsRef.on("child_added", function(snapshot) {
         var data = snapshot.val();
+        google.charts.load("current", { packages: ["corechart", "line"] });
+        google.charts.setOnLoadCallback(drawBasic);
+        google.charts.setOnLoadCallback(drawBasic2);
+        google.charts.setOnLoadCallback(drawBasic3);
 
         if (data.payload_fields.location.lng < 4.8) {
           rotterdam.push({
@@ -40,7 +44,7 @@ export default {
             date:
               data.metadata.time.slice(6, 10).toString() +
               " " +
-              data.metadata.time.slice(12, 16).toString()
+              data.metadata.time.slice(11, 16).toString()
           });
         } else if (
           data.payload_fields.location.lng > 4.8 &&
@@ -51,7 +55,7 @@ export default {
             date:
               data.metadata.time.slice(6, 10).toString() +
               " " +
-              data.metadata.time.slice(12, 16).toString()
+              data.metadata.time.slice(11, 16).toString()
           });
         } else if (data.payload_fields.location.lng > 5.1) {
           apeldoorn.push({
@@ -59,7 +63,7 @@ export default {
             date:
               data.metadata.time.slice(6, 10).toString() +
               " " +
-              data.metadata.time.slice(12, 16).toString()
+              data.metadata.time.slice(11, 16).toString()
           });
         }
       });
@@ -71,11 +75,6 @@ export default {
         }
       };
 
-      google.charts.load("current", { packages: ["corechart", "line"] });
-      google.charts.setOnLoadCallback(drawBasic);
-      google.charts.setOnLoadCallback(drawBasic2);
-      google.charts.setOnLoadCallback(drawBasic3);
-
       function drawBasic2() {
         var data = new google.visualization.DataTable();
         data.addColumn("string", "Date");
@@ -84,7 +83,6 @@ export default {
 
         for (let i = 0; i < turbidityArray.length; i++) {
           for (let j = 0; j < turbidityArray[i].amsterdam.length; j++) {
-
             data.addRows([
               [
                 turbidityArray[i].amsterdam[j].date,
@@ -110,7 +108,6 @@ export default {
 
         for (let i = 0; i < turbidityArray.length; i++) {
           for (let j = 0; j < turbidityArray[i].apeldoorn.length; j++) {
-
             data.addRows([
               [
                 turbidityArray[i].apeldoorn[j].date,
