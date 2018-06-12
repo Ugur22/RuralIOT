@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="navbar is-link ">
       <div class="navbar-brand">
-        <a class="navbar-item" href="/">
+        <a class="navbar-item" href="/" @click="showNav = false">
             <router-link to="/">RuralOIT</router-link>
         </a>
         <!--
