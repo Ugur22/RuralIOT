@@ -19,10 +19,10 @@
     -->
       <div class="navbar-menu" :class="{ 'is-active': showNav }">
         <div class="navbar-start">
-           <a class="navbar-item">
-           <router-link to="/about">Water quality graphs</router-link>
+           <a class="navbar-item" @click="showNav = false">
+           <router-link to="/about" >Water quality graphs</router-link>
         </a>
-         <a class="navbar-item">
+         <a class="navbar-item"  @click="showNav = false">
            <router-link to="/water">Water Pumps</router-link>
         </a>
         </div>
