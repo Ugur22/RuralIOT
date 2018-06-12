@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <h3 class="title">{{username}}</h3>
      <button id="logout" v-if="user" v-on:click="logout" class="button is-link">Logout</button>
       <div class="columns">
 
@@ -75,7 +76,6 @@ var stories = [];
 var length = 100;
 var lengthTitle = 35;
 var dots = "...";
-
 storyRef.on("child_added", function(snapshot) {
   var data = snapshot.val();
   stories.push(data);
@@ -86,6 +86,7 @@ export default {
   data() {
     return {
       user: firebase.auth().currentUser.email,
+      username: firebase.auth().currentUser.displayName,
       title: "",
       text: "",
       imgurl: "",
@@ -96,9 +97,7 @@ export default {
   filters: {
     truncate: function(value) {
       if (!value) return "";
-      return value.length > 30
-        ? value.substring(0, 40).concat("...")
-        : value;
+      return value.length > 30 ? value.substring(0, 40).concat("...") : value;
     },
     slice: function(value) {
       if (!value) return "";
@@ -117,9 +116,8 @@ export default {
         });
     },
     processForm: function() {
-      let newMeasurementref = storyRef.push();
-      console.log(firebase.auth().currentUser);
-      newMeasurementref.set({
+      let storyRefAdd = storyRef.push();
+      storyRefAdd.set({
         title: this.title,
         text: this.text,
         user: firebase.auth().currentUser.displayName,
@@ -188,4 +186,6 @@ li {
 a {
   color: #42b983;
 }
+
+
 </style>
