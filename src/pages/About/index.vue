@@ -67,29 +67,22 @@ export default {
           });
         }
       });
-      var options = {
-        legend: { position: "top" },
-        curveType: "function",
-        series: {
-          0: { lineWidth: 5 }
-        }
-      };
 
       function drawBasic2() {
         var data = new google.visualization.DataTable();
         data.addColumn("string", "Date");
-        data.addColumn("number", "Amsterdam");
+        data.addColumn("number", "turbidity");
         data.addColumn({ type: "number", role: "annotation" });
-        data.addColumn("number", "danger");
+        data.addColumn("number", "Safe turbidity level");
 
         for (let i = 0; i < turbidityArray.length; i++) {
           for (let j = 0; j < turbidityArray[i].amsterdam.length; j++) {
             data.addRows([
               [
                 turbidityArray[i].amsterdam[j].date,
-                turbidityArray[i].amsterdam[j].turbidity,
-                turbidityArray[i].amsterdam[j].turbidity,
-                4
+                parseFloat(turbidityArray[i].amsterdam[j].turbidity.toFixed(2)),
+                parseFloat(turbidityArray[i].amsterdam[j].turbidity.toFixed(2)),
+                4.3
               ]
             ]);
           }
@@ -99,24 +92,42 @@ export default {
           document.getElementById("chart_div2")
         );
 
+        var options = {
+          title: "Amsterdam",
+          legend: { position: "top" },
+          curveType: "function",
+          colors: ["#3273dc", "#2ecc71", "#ec8f6e"],
+          series: {
+            0: { lineWidth: 5 },
+            1: { lineWidth: 4 }
+          },
+          hAxis: {
+            title: "Date"
+          },
+          vAxis: {
+            title: "turbidity",
+            ticks: [0, 1, 2, 3, 4, 5, 6]
+          }
+        };
+
         chart.draw(data, options);
       }
 
       function drawBasic3() {
         var data = new google.visualization.DataTable();
         data.addColumn("string", "Date");
-        data.addColumn("number", "Apeldoorn");
+        data.addColumn("number", "turbidity");
         data.addColumn({ type: "number", role: "annotation" });
-        data.addColumn("number", "danger");
+        data.addColumn("number", "Safe turbidity level");
 
         for (let i = 0; i < turbidityArray.length; i++) {
           for (let j = 0; j < turbidityArray[i].apeldoorn.length; j++) {
             data.addRows([
               [
                 turbidityArray[i].apeldoorn[j].date,
-                turbidityArray[i].apeldoorn[j].turbidity,
-                turbidityArray[i].apeldoorn[j].turbidity,
-                4
+                parseFloat(turbidityArray[i].apeldoorn[j].turbidity.toFixed(2)),
+                parseFloat(turbidityArray[i].apeldoorn[j].turbidity.toFixed(2)),
+                4.3
               ]
             ]);
           }
@@ -126,24 +137,42 @@ export default {
           document.getElementById("chart_div3")
         );
 
+        var options = {
+          title: "Apeldoorn",
+          legend: { position: "top" },
+          curveType: "function",
+          colors: ["#3273dc", "#2ecc71", "#ec8f6e"],
+          series: {
+            0: { lineWidth: 5 },
+            1: { lineWidth: 4 }
+          },
+          hAxis: {
+            title: "Date "
+          },
+          vAxis: {
+            title: "turbidity",
+            ticks: [0, 1, 2, 3, 4, 5, 6]
+          }
+        };
+
         chart.draw(data, options);
       }
 
       function drawBasic() {
         var data = new google.visualization.DataTable();
         data.addColumn("string", "Date");
-        data.addColumn("number", "Rotterdam");
+        data.addColumn("number", "turbidity");
         data.addColumn({ type: "number", role: "annotation" });
-        data.addColumn("number", "danger");
+        data.addColumn("number", "Safe turbidity level");
 
         for (let i = 0; i < turbidityArray.length; i++) {
           for (let j = 0; j < turbidityArray[i].rotterdam.length; j++) {
             data.addRows([
               [
                 turbidityArray[i].rotterdam[j].date,
-                turbidityArray[i].rotterdam[j].turbidity,
-                turbidityArray[i].rotterdam[j].turbidity,
-                4
+                parseFloat(turbidityArray[i].rotterdam[j].turbidity.toFixed(2)),
+                parseFloat(turbidityArray[i].rotterdam[j].turbidity.toFixed(2)),
+                4.3
               ]
             ]);
           }
@@ -152,6 +181,24 @@ export default {
         var chart = new google.visualization.LineChart(
           document.getElementById("chart_div")
         );
+
+        var options = {
+          title: "Amsterdam",
+          legend: { position: "top" },
+          curveType: "function",
+          colors: ["#3273dc", "#2ecc71", "#ec8f6e"],
+          series: {
+            0: { lineWidth: 5 },
+            1: { lineWidth: 4 }
+          },
+          hAxis: {
+            title: "Date"
+          },
+          vAxis: {
+            title: "turbidity",
+            ticks: [0, 1, 2, 3, 4, 5, 6]
+          }
+        };
 
         chart.draw(data, options);
       }
