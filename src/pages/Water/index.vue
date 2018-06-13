@@ -81,7 +81,7 @@ export default {
             "This place has been measured on: " +
             dateMeasurement.slice(0, 10) +
             " at: " +
-            dateMeasurement.slice(12, 16),
+            dateMeasurement.slice(11, 16),
           label: {
             text: turbidity,
             color: "#000",
@@ -126,7 +126,7 @@ export default {
                 "This place has been measured on: " +
                   dateMeasurement.slice(0, 10) +
                   " at: " +
-                  dateMeasurement.slice(12, 16)
+                  dateMeasurement.slice(11, 16)
               );
               infowindow.open(map, this);
             };
@@ -160,6 +160,11 @@ a {
 
 #map {
   width: 100%;
-  height: 500px;
+  height: 100%;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
 }
 </style>

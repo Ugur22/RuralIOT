@@ -80,6 +80,7 @@ export default {
         data.addColumn("string", "Date");
         data.addColumn("number", "Amsterdam");
         data.addColumn({ type: "number", role: "annotation" });
+        data.addColumn("number", "danger");
 
         for (let i = 0; i < turbidityArray.length; i++) {
           for (let j = 0; j < turbidityArray[i].amsterdam.length; j++) {
@@ -87,7 +88,8 @@ export default {
               [
                 turbidityArray[i].amsterdam[j].date,
                 turbidityArray[i].amsterdam[j].turbidity,
-                turbidityArray[i].amsterdam[j].turbidity
+                turbidityArray[i].amsterdam[j].turbidity,
+                4
               ]
             ]);
           }
@@ -105,6 +107,7 @@ export default {
         data.addColumn("string", "Date");
         data.addColumn("number", "Apeldoorn");
         data.addColumn({ type: "number", role: "annotation" });
+        data.addColumn("number", "danger");
 
         for (let i = 0; i < turbidityArray.length; i++) {
           for (let j = 0; j < turbidityArray[i].apeldoorn.length; j++) {
@@ -112,7 +115,8 @@ export default {
               [
                 turbidityArray[i].apeldoorn[j].date,
                 turbidityArray[i].apeldoorn[j].turbidity,
-                turbidityArray[i].apeldoorn[j].turbidity
+                turbidityArray[i].apeldoorn[j].turbidity,
+                4
               ]
             ]);
           }
@@ -130,6 +134,7 @@ export default {
         data.addColumn("string", "Date");
         data.addColumn("number", "Rotterdam");
         data.addColumn({ type: "number", role: "annotation" });
+        data.addColumn("number", "danger");
 
         for (let i = 0; i < turbidityArray.length; i++) {
           for (let j = 0; j < turbidityArray[i].rotterdam.length; j++) {
@@ -137,7 +142,8 @@ export default {
               [
                 turbidityArray[i].rotterdam[j].date,
                 turbidityArray[i].rotterdam[j].turbidity,
-                turbidityArray[i].rotterdam[j].turbidity
+                turbidityArray[i].rotterdam[j].turbidity,
+                4
               ]
             ]);
           }
