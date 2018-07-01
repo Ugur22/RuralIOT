@@ -14,7 +14,9 @@
     "path": "^0.12.7",
     "socket.io": "^2.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "socket.io": "^2.1.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RickBr0wn/johnnyFive-sockets.io.git"
