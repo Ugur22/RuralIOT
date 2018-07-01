@@ -25,7 +25,8 @@ function initialize() {
   var map = new google.maps.Map(
     document.getElementById("map"), {
       center: { lat: 51.91194, lng: 4.48538 },
-      zoom: 13,
+      zoom: 10,
+      gestureHandling: 'greedy',
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
@@ -75,7 +76,6 @@ function initialize() {
     });
 
     cluster.setCalculator(function (markers, numStyles) {
-      //create an index for icon styles
       var val = 0,
         index = 0,
         dv;
@@ -113,12 +113,8 @@ function initialize() {
 
   var cluster = new MarkerClusterer(map, markers, {
     imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+
   });
-
-
-
-
-
 
 }
 google.maps.event.addDomListener(window, "load", initialize);

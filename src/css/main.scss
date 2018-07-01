@@ -1,0 +1,28 @@
+@import '_colors';
+
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background:$secondary;
+
+    .columns {
+        margin: 10px;
+    }
+
+    #map {
+        width: 100%;
+        height: calc(100% - 159px);
+    }
+
+    li {
+        list-style-type: none;
+    }
+}
+
+
+
+
+
