@@ -29,7 +29,7 @@ export default {
   methods: {
     initMap: function() {
       var map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 51.91194, lng: 4.48538 },
+        center: { lat: 37.2124, lng: 32.9843 },
         zoom: 8,
         gestureHandling: "greedy",
         mapTypeId: google.maps.MapTypeId.ROADMAP

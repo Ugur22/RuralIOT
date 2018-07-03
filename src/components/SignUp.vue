@@ -76,12 +76,9 @@ export default {
 </script>
 
 <style scoped>
-
 .hero.is-fullheight {
-
   min-height: 0;
 }
-
 </style>
 
 

@@ -19,3 +19,8 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+##preview RuralIOT web-app
+![Google line chart showing measurements per city](https://imgur.com/QRnnqXj)
+
+![Google maps markers  clusters of measurements](https://imgur.com/u7Bgm7l)

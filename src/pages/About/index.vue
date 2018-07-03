@@ -38,7 +38,7 @@ export default {
         google.charts.setOnLoadCallback(drawBasic2);
         google.charts.setOnLoadCallback(drawBasic3);
 
-        if (data.payload_fields.location.lng < 4.8) {
+        if (data.payload_fields.location.lng < 32.9) {
           rotterdam.push({
             turbidity: data.payload_fields.turbidity,
             date:
@@ -47,8 +47,8 @@ export default {
               data.metadata.time.slice(11, 16).toString()
           });
         } else if (
-          data.payload_fields.location.lng > 4.8 &&
-          data.payload_fields.location.lng < 5.1
+          data.payload_fields.location.lng > 32.9 &&
+          data.payload_fields.location.lng < 33
         ) {
           amsterdam.push({
             turbidity: data.payload_fields.turbidity,
@@ -57,7 +57,7 @@ export default {
               " " +
               data.metadata.time.slice(11, 16).toString()
           });
-        } else if (data.payload_fields.location.lng > 5.1) {
+        } else if (data.payload_fields.location.lng > 33) {
           apeldoorn.push({
             turbidity: data.payload_fields.turbidity,
             date:
@@ -93,7 +93,7 @@ export default {
         );
 
         var options = {
-          title: "Amsterdam",
+          title: "Akarköy",
           legend: { position: "top" },
           curveType: "function",
           colors: ["#3273dc", "#2ecc71", "#ec8f6e"],
@@ -138,7 +138,7 @@ export default {
         );
 
         var options = {
-          title: "Apeldoorn",
+          title: "Yollarbasi",
           legend: { position: "top" },
           curveType: "function",
           colors: ["#3273dc", "#2ecc71", "#ec8f6e"],
@@ -183,7 +183,7 @@ export default {
         );
 
         var options = {
-          title: "Amsterdam",
+          title: "Kâzım Karabekir",
           legend: { position: "top" },
           curveType: "function",
           colors: ["#3273dc", "#2ecc71", "#ec8f6e"],

@@ -81,6 +81,8 @@ storyRef.on("child_added", function(snapshot) {
   stories.push(data);
 });
 
+
+
 export default {
   name: "home",
   data() {
