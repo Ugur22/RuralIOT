@@ -5,7 +5,7 @@ Rural IT Solutions will provide a way for local villagers to beam themselves int
 
 This web-app will display every measurement made by the IOT device on a Google maps marker. Markers that are clsoe to each other will be combined into a cluster to display an average value of that area. The measurements will also be used to be displayed in a Google line chart featuring differnt cities.
 
-##preview RuralIOT web-app
+## preview RuralIOT web-app
 ![Google line chart showing measurements per city](https://i.imgur.com/QRnnqXj.png)
 
 ![Google maps markers  clusters of measurements](https://i.imgur.com/u7Bgm7l.png)
